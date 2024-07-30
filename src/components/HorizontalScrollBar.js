@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import BodyPart from "./BodyPart";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
@@ -7,9 +7,12 @@ import RightArrowIcon from "../assets/images/right-arrow.png";
 import LeftArrowIcon from "../assets/images/left-arrow.png";
 import { useContext } from "react";
 function HorizontalScrollBar({ data, setBodyPart, bodyPart }) {
-  console.log("Data:", data);
   return (
-    <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+    <ScrollMenu
+      LeftArrow={LeftArrow}
+      RightArrow={RightArrow}
+      sx={{ overflowX: "auto", width: "100%", position: "relative" }}
+    >
       {data.map((item) => (
         <Box
           key={item.id || item}
