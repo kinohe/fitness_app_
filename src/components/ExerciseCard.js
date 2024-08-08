@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Box, Typography, Stack, Button, Pagination } from "@mui/material";
-function ExerciseCard({ exercise, exercises }) {
+import { Typography, Stack, Button } from "@mui/material";
+function ExerciseCard({ exercise }) {
   return (
     <Link className="exercise-card" to={`/exercise/${exercise.id}`}>
       <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" />

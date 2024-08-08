@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Box, Stack, Button } from "@mui/material";
+import { Typography, Stack, Button } from "@mui/material";
 
 import BodyPartImage from "../assets/images/body-part.png";
 import TargetImage from "../assets/images/target.png";
@@ -37,8 +37,9 @@ function Detail({ exerciseDetail }) {
           {name}
         </Typography>
         <Typography variant="h6">
-          Exercises keep you strong {name} one of the best exercise to target
-          your {target}. It will help you improve your mood and gain energy.
+          Exercises keep you strong, {name} is one of the best exercise to
+          target your {target}. It will help you improve your mood and gain
+          energy.
         </Typography>
 
         {extraDetail.map((item) => (
@@ -51,9 +52,15 @@ function Detail({ exerciseDetail }) {
                 height: "100px",
               }}
             >
-              <img src={item.icon} />
+              <img
+                src={item.icon}
+                alt={bodyPart}
+                style={{ width: "50px", height: "50px" }}
+              />
             </Button>
-            <Typography variant="h5">{item.name}</Typography>
+            <Typography variant="h5" textTransform="capitalize">
+              {item.name}
+            </Typography>
           </Stack>
         ))}
       </Stack>

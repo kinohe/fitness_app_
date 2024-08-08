@@ -1,35 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Typography } from "@mui/material";
 import BodyPart from "./BodyPart";
+import ExerciseCard from "./ExerciseCard";
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import "react-horizontal-scrolling-menu/dist/styles.css";
 import RightArrowIcon from "../assets/images/right-arrow.png";
 import LeftArrowIcon from "../assets/images/left-arrow.png";
 import { useContext } from "react";
-function HorizontalScrollBar({ data, setBodyPart, bodyPart }) {
+function HorizontalScrollBar({ data, setBodyPart, bodyPart, isBodyParts }) {
   return (
-    <ScrollMenu
-      LeftArrow={LeftArrow}
-      RightArrow={RightArrow}
-      sx={{ overflowX: "auto", width: "100%", position: "relative" }}
+    <Box
+      sx={{
+        overflowX: "hidden",
+
+        width: "100%",
+        display: "flex",
+        justifyContent: "flex-start",
+      }}
     >
-      {data.map((item) => (
-        <Box
-          key={item.id || item}
-          itemId={item.id || item}
-          title={item.id || item}
-          m="0 40px"
-        >
-          {
-            <BodyPart
-              item={item}
-              BodyPart={bodyPart}
-              setBodyPart={setBodyPart}
-            />
-          }
-        </Box>
-      ))}
-    </ScrollMenu>
+      <ScrollMenu
+        LeftArrow={LeftArrow}
+        RightArrow={RightArrow}
+        sx={{ overflowX: "auto", width: "100%", position: "relative" }}
+      >
+        {data.map((item) => (
+          <Box
+            key={item.id || item}
+            itemId={item.id || item}
+            title={item.id || item}
+            m="0 40px"
+          >
+            {isBodyParts ? (
+              <BodyPart
+                item={item}
+                BodyPart={bodyPart}
+                setBodyPart={setBodyPart}
+              />
+            ) : (
+              <ExerciseCard exercise={item} />
+            )}
+          </Box>
+        ))}
+      </ScrollMenu>
+    </Box>
   );
 }
 const LeftArrow = () => {
